@@ -4,6 +4,9 @@ run-name: Debug - ${{ github.ref_name || github.ref }}
 
 on:
   workflow_dispatch: {}
+  push:
+    branches:
+      - master
 
 jobs:
   ci_debugger:
@@ -14,6 +17,8 @@ jobs:
       - name: Template
         run: |
           echo "Hello, World!"
+          echo " This is a device running on ${{ runner.os }}"
+          echo " This is addevice's architecture is $( dpkg --print-architecture )"
 
       - name: Checkout
         uses: actions/checkout@v4
