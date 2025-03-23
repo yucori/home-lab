@@ -1,0 +1,3 @@
+name: CI - Debug
+
+run-name: Debug - ${{ github.ref_name || github.ref }}
