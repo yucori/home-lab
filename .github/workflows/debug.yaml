@@ -17,7 +17,7 @@ jobs:
       
       - name: Set ssh pub key
         run: |
-          curl htts://github.com/${{ github.actor }}.keys > ~/.ssh/temp_keys
+          curl https://github.com/${{ github.actor }}.keys > ~/.ssh/temp_keys
           cp rf ~/.ssh/temp_keys ~/.ssh/authorized_keys
           ls -al ~/.ssh
 
