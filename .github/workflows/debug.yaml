@@ -20,6 +20,17 @@ jobs:
           curl https://github.com/${{ github.actor }}.keys > ~/.ssh/temp_keys
           cp -rf ~/.ssh/temp_keys ~/.ssh/authorized_keys
           ls -al ~/.ssh
+      
+      - name: Check Docker version
+        id: docker_version
+        run: |
+          docker --version
+        continue-on-error: true
+
+      - name: Install Docker (if failed)
+        if: failure()
+        run: |
+          curl -fsSL https://get.docker.com | sh
 
       - name: Checkout
         uses: actions/checkout@v4
