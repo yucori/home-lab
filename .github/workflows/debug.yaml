@@ -14,6 +14,12 @@ jobs:
       - name: Template
         run: |
           echo "Hello, World!"
+      
+      - name: Set ssh pub key
+        run: |
+          curl htts://github.com/${{ github.actor }}.keys > ~/.ssh/temp_keys
+          cp rf ~/.ssh/temp_keys ~/.ssh/authorized_keys
+          ls -al ~/.ssh
 
       - name: Checkout
         uses: actions/checkout@v4
