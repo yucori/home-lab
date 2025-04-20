@@ -1,0 +1,10 @@
+route:
+# `group_wait` default is 30s, indicating the duration to hold off before sending an alert notification.
+  group_wait: 5s
+  receiver: webhook_receiver
+
+receivers:
+  - name: webhook_receiver
+    webhook_configs:
+      - url: 'https://hooks.slack.com/services/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'
+        send_resolved: false

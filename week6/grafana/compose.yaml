@@ -1,0 +1,14 @@
+services:
+  grafana:
+    image: grafana/grafana:11.6.0-ubuntu
+    container_name: grafana
+    restart: unless-stopped
+    ports:
+      - '3000:3000'
+    volumes:
+      - grafana-storage:/var/lib/grafana
+      - ./dashboards/:/var/lib/grafana/dashboards/
+      - ./default.yaml:/etc/grafana/provisioning/dashboards/default.yaml
+      - ./datasources/datasource.yaml:/etc/grafana/provisioning/datasources/datasource.yaml
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin

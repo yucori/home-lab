@@ -1,0 +1,18 @@
+services:
+  grafana:
+    extends:
+      file: ./grafana/compose.yaml
+      service: grafana
+  prometheus:
+    extends:
+      file: ./prometheus/compose.yaml
+      service: prometheus
+  node_exporter:
+    extends:
+      file: ./exporter/node-exporter/compose.yaml
+      service: node_exporter
+volumes:
+  grafana-storage:
+    name: grafana-storage
+  prometheus_data:
+    name: prometheus_data
